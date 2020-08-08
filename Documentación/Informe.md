@@ -36,7 +36,7 @@ Para la primera parte del desarrollo del proyecto, se uso la plataforma cloud de
 
 Para el desarrollo del modelo, decidimos utilizar las redes generativas adversarias o GAN por sus siglas en inglés. Decidimos usar esto debido a que a lo estudiado anteriormente en el curso, puede ser lo más apto con el objetivo de el generar imagenes. Para el desarrollo de lo mismo, se uso principalmente [TensorFlow](https://www.tensorflow.org/) y se monto toda la arquitectura sobre la plataforma de [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb),  debido a que nos otorga la opción de elegir un tipo de entorno con GPU, lo cual sera necesario para el desarrollo del modelo.
 
-![Arquitectura GAN](../Otros/Imagenes/GAN.png)
+![Arquitectura GAN](https://github.com/AVelasquezCH/Sketch2Picture/blob/master/Otros/Imagenes/GAN.jpg)
 
 En la imagen anterior podemos apreciar la estructura de las GAN, las cuales cuentan con 2 elementos clave; el generador y el discriminador. El generador como su propio nombre nos indica, se encarga de crear las imagenes segun la entrada dada; y el discriminador se encargar de evaluar que tan parecido es la imagen generada a la imagen objetivo. Por cada época, se compara la inagén generada con la objetivo, se determinan los costes y se procede a aplicar los gradientes, tanto al generador como al discriminador, con lo cual se produce el aprendizaje.
 
