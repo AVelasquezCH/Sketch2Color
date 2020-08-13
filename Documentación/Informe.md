@@ -40,5 +40,7 @@ Para el desarrollo del modelo, decidimos utilizar las redes generativas adversar
 
 En la imagen anterior podemos apreciar la estructura de las GAN, las cuales cuentan con 2 elementos clave; el generador y el discriminador. El generador como su propio nombre nos indica, se encarga de crear las imagenes segun la entrada dada; y el discriminador se encargar de evaluar que tan parecido es la imagen generada a la imagen objetivo. Por cada época, se compara la inagén generada con la objetivo, se determinan los costes y se procede a aplicar los gradientes, tanto al generador como al discriminador, con lo cual se produce el aprendizaje.
 
+[test](https://github.com/AVelasquezCH/Sketch2Picture/blob/master/C%C3%B3digo/Consultas.ipynb)
+
 ## Conclusiones
 
