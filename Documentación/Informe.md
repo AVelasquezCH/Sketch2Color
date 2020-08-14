@@ -63,8 +63,10 @@ El algoritmo calcula un promedio del primer y el segundo momento, y los parámet
 
 A partir de una red neuronal convolucional tradicional y después algunas modificaciones en la arquitectura se originó la U-net. El fin de utilizar este tipo de red, es porque puede localizar y distinguir bordes mediante una clasificación en cada píxel, por lo que la entrada y la salida comparten el mismo tamaño
 La red a simple vista tiene la forma de “U”, la arquitectura simétrica que posee se divide en dos partes: la convolución  y la deconvolución.
-Mediante la convolución , a medida que las imágenes pasan por cada capa van reduciendo su tamaño; a diferencia de la deconvolución que se encarga de aumentar el tamaño de la imagen hasta recuperar el tamaño original. La razón de usar estas dos rutas es combinar la información de las capas anteriores para obtener una predicción más precisa. 
-        
+Mediante la convolución , a medida que las imágenes pasan por cada capa van reduciendo su tamaño; a diferencia de la deconvolución que se encarga de aumentar el tamaño de la imagen hasta recuperar el tamaño original. La razón de usar estas dos rutas es combinar la información de las capas anteriores para obtener una predicción más precisa. El modelo de una U net puede ser graficado con la siguiente imagen.
+
+![Unet](https://github.com/AVelasquezCH/Sketch2Color/blob/master/Otros/Imagenes/Unet.jpg)
+
 ## Procedimiento
 
 Para el desarrollo de este proyecto, decidimos dividirlo en 2 grupos; una parte en la que se tiene como objetivo hacer un analisis de la realidad peruana sobre la criminalidad para tener una justificación para el desarrollo del modelo de deep learning, y la segunda etapa consistira en el desarrollo del modelo anteriormente mencionado. Para la primera parte del desarrollo del proyecto, se uso la plataforma cloud de Azure, la cual entre uno de sus muchos servicios, incluye el de creación y administración de maquinas virtuales. En esta, se monto una maquina que funciona con el sistema operativo de Debian en su versión 10. Se configuro conexión ssh para garantizar su seguridad, se instalo Jupyter Lab, se implemento maria DB con phpmyadmin y como lenguaje se utilizo python.
@@ -84,7 +86,7 @@ Para esta etapa, los dos datasets que contenian información de la criminalidad 
 
 Para el modelado de datos estructuradas se consideraron 9 tablas, las cuales pueden ser identificadas en la siguiente imagen.
 
-![BD](url_bd)
+![BD](https://github.com/AVelasquezCH/Sketch2Color/blob/master/Otros/Imagenes/BD.png)
 
 Como se puede apreciar, hay 2 tablas principales las cuales se insertaron la mayoria de datos relevantes para el analisis a realizar, las cuales son Crimenes_DataCrim y Robos_Lima. Basicamente el nombre de estas indica el respectivo dataset del que se obtuvieron, y seran de las más relevantes para las siguientes etapas.
 
@@ -106,11 +108,11 @@ Para el proyecto se utilizaron paquetes como lo son tensorflow, keras, matplotli
 
 Luego de tener definida las funciones se procede a crear la funcion que definira al generador, para este se definio un arreglo con las capas respectivas para el downscaling y el upscaling, se recorre capa por capa, se hacen las skip connections y se retorna la entrada y la salida, el grafo del generador puede ser visto en la siguiente imagen.
 
-![Generador](link_generador)
+![Generador](https://github.com/AVelasquezCH/Sketch2Color/blob/master/Otros/Imagenes/Generador.png)
 
 Pasa lo mismo con la función que define el discriminador, aunque este solo hace un downscaling, teniendo como input la imagen generada por el modelo y la imagen de entrada, en la siguiente imagen se tiene el grafo generado por el discriminador.
 
-![Discriminador](link_discriminador)
+![Discriminador](https://github.com/AVelasquezCH/Sketch2Color/blob/master/Otros/Imagenes/Discriminador.png)
 
 Luego se proceden a definir los casos de coste; para el coste del discriminador se calculara primero su costo al analizar la imagen objetivo, luego se calcula el costo del discriminador al analizar la imagen generada, ambos resultados se suman y se retorna este valor. Para el costo del generador se calcula primero su costo al analizar la imagen que ha generado, luego se calcula la media de la imagen objetivo versus la imagen generada, y luego se suma el costo de la imagen generado al promedio del valor anteriormente calculado multiplicado por un valor lambda, esto con el objetivo de mejorar el aprendizaje; para este modelo se determino que con el valor lambda de 100 se obtenian mejores resultados. 
 
